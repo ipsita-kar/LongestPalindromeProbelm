@@ -1,0 +1,42 @@
+
+Certainly! Let's break down the code line by line:
+
+python
+Copy code
+class Solution:
+This line declares a class named Solution.
+
+python
+Copy code
+    def longestPalindrome(self, s: str) -> str:
+This line defines a method named longestPalindrome within the Solution class. It takes a string s as input and returns a string. The self parameter refers to the instance of the class.
+
+python
+Copy code
+        def check_palin(s):
+This line defines a nested function named check_palin. This function takes a string s as input and returns True if the string is a palindrome (reads the same forwards and backwards), otherwise it returns False.
+
+python
+Copy code
+            return (s==s[::-1])
+This line checks if the string s is equal to its reverse (s[::-1]). If it is, then the function returns True, indicating that s is a palindrome. Otherwise, it returns False.
+
+python
+Copy code
+        for length in range(len(s), 0, -1):
+This line starts a loop that iterates over the range of integers from the length of the input string s down to 1, moving in steps of -1. This loop controls the length of substrings that will be checked for being palindromes, starting from the length of the entire string and decreasing down to 1.
+
+python
+Copy code
+            for start_index in range(0, len(s) + 1 - length):
+This line starts another loop that iterates over the range of possible starting indices for substrings of the current length being considered. The range starts from 0 and goes up to len(s) + 1 - length. This ensures that the substrings being checked don't exceed the length of the original string.
+
+python
+Copy code
+                if check_palin(s[start_index:(start_index + length)]):
+This line checks if the substring of length length starting from start_index in the string s is a palindrome. It does this by calling the check_palin function with the substring as input.
+
+python
+Copy code
+                    return s[start_index:(start_index + length)]
+If the substring is a palindrome, this line returns the substring, as it is the longest palindrome found starting from the current starting index and of the current length.
